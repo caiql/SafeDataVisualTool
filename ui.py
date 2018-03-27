@@ -31,8 +31,9 @@ class MyForm(QMainWindow):
 #        makechart.make_bigmap(self.data)
 #        makechart.make_yearmap(self.data)
 #        makechart.make_bigline(self.data)
-        makechart.make_bigextended(self.data)
-        url_string = "file:///html/big_extendedline.html"
+#        makechart.make_bigextended(self.data)
+        makechart.make_bigregion(self.data)
+        url_string = "file:///html/big_regionbar.html"
         self.view_html(url_string)
 
     def view_html(self,url_string):

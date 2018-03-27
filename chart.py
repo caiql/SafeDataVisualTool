@@ -41,3 +41,31 @@ def make_line_plots(x, y, name, title, x_name, y_name, filename):
     fig = Figure(data=data_l, layout=layout)
     filename = '%s%s%s' % ('html/', filename, 'line.html')
     plotly.offline.plot(fig, filename=filename,auto_open=False)
+
+def make_nbarchart(dataset,title,x_name,y_name,filename):
+    data_bn = []
+    for columns in dataset.columns:
+        tr_y1 = Bar(
+            x=dataset.index,
+            y=dataset[columns].values,
+            name=columns
+        )
+        data_bn.append(tr_y1)
+    layout = Layout(title=title, xaxis={'title': x_name}, yaxis={'title': y_name})
+    fig = Figure(data=data_bn, layout=layout)
+    filename = '%s%s%s' % ('html/', filename, 'bar.html')
+    plotly.offline.plot(fig, filename=filename,auto_open=False)
+
+def make_nline_plots(dataset,tiltle,x_name,y_name,filename):
+    data_ln = []
+    for columns in dataset.columns:
+        tr_x = Scatter(
+            x=dataset.index,
+            y=dataset[columns].values,
+            name=columns
+        )
+        data_ln.append(tr_x)
+    layout = Layout(title=tiltle, xaxis={'title': x_name}, yaxis={'title': y_name})
+    fig = Figure(data=data_ln, layout=layout)
+    filename = '%s%s%s' % ('html/', filename, 'line.html')
+    plotly.offline.plot(fig, filename=filename, auto_open=False)
