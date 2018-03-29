@@ -69,3 +69,15 @@ def make_nline_plots(dataset,tiltle,x_name,y_name,filename):
     fig = Figure(data=data_ln, layout=layout)
     filename = '%s%s%s' % ('html/', filename, 'line.html')
     plotly.offline.plot(fig, filename=filename, auto_open=False)
+
+def make_pie_charts(dataset,title,filename):
+    data_g = []
+    tr_p = Pie(
+    labels = dataset.index,
+    values = dataset.values
+    )
+    data_g.append(tr_p)
+    layout = Layout(title=title)
+    fig = Figure(data=data_g, layout=layout)
+    filename = '%s%s%s' % ('html/', filename, 'pie.html')
+    plotly.offline.plot(fig, filename=filename, auto_open=False)

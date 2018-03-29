@@ -80,14 +80,22 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.label_2)
 
 #属性展示框
-        self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget.setMinimumSize(QtCore.QSize(150, 300))
-        self.tableWidget.setMaximumSize(QtCore.QSize(150, 16777215))
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(0)
-        self.tableWidget.setRowCount(0)
-        self.verticalLayout.addWidget(self.tableWidget)
+        self.treeWidget = QtWidgets.QTreeWidget(self.centralwidget)
+        self.treeWidget.setMinimumSize(QtCore.QSize(150, 300))
+        self.treeWidget.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.treeWidget.setObjectName("treeWidget")
+        self.treeWidget.headerItem().setText(0, "样式选择")
+        self.verticalLayout.addWidget(self.treeWidget)
         self.horizontalLayout_2.addLayout(self.verticalLayout)
+
+#        self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
+#        self.tableWidget.setMinimumSize(QtCore.QSize(150, 300))
+#        self.tableWidget.setMaximumSize(QtCore.QSize(150, 16777215))
+#        self.tableWidget.setObjectName("tableWidget")
+#        self.tableWidget.setColumnCount(0)
+#        self.tableWidget.setRowCount(0)
+#        self.verticalLayout.addWidget(self.tableWidget)
+#        self.horizontalLayout_2.addLayout(self.verticalLayout)
 
 #嵌入浏览器框架
         self.webView = QWebEngineView(self.centralwidget)
