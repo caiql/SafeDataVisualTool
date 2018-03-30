@@ -19,11 +19,11 @@ class datadel(object):
         #恐怖袭击数量统计分析
         self.year_group = None#年份组合,series
         self.year_data = None#年度恐怖袭击折线图，dataframe
-        self.extended_per = None#持续超过24小时占比组合折线图，dataframe
+        self.extended = None
+        self.extended_data = None#持续超过24小时占比组合折线图，dataframe
+        self.region_extended_data = None
         self.region_year_group = None#年份+恐怖袭击数量+地区组合折线图，dataframe
-        self.region_year = None#按地区查看每年数量，dataframe
         self.region_group = None#各个地区恐怖袭击数量占比-饼图，series
-        self.year_region_group = None#地区+年份组合，dataframe
         self.year_region = None#按年份查看各个地区数量占比-饼图，dataframe
 
         self.chart_title = None#图表的标题
@@ -33,8 +33,7 @@ class datadel(object):
 
     # 大地图数据的封装:经纬度、国家、死亡总数、发生袭击的次数
     def del_mapdata(self):
-        if self.mapdata == None:
-            self.mapdata = self.data_list[self.data_list['specificity'] != 5]
+        self.mapdata = self.data_list[self.data_list['specificity'] != 5]
         mapdata = self.mapdata[['country_txt', 'latitude', 'longitude', 'nkill']]
         mapdata['count'] = 1
         latlonggroup = mapdata.groupby(['country_txt', 'latitude', 'longitude']).count().reset_index()
@@ -47,8 +46,6 @@ class datadel(object):
 
     # 每年地图数据的封装：经纬度、国家、第一恐怖组织名称、该年死亡总数
     def set_year_mapdata(self):
-        if self.mapdata == None:
-            self.mapdata = self.data_list[self.data_list['specificity'] != 5]
         yearmapdata = self.mapdata[['iyear', 'country_txt', 'latitude', 'longitude', 'gname', 'nkill']]
         self.latlonggroup_year = yearmapdata.groupby('iyear')
 
@@ -70,8 +67,6 @@ class datadel(object):
 
     #所有年度恐怖袭击数量（柱状图、折线图）
     def set_year_data(self):
-        if self.year_group ==None:
-            self.set_year_group()
         year_all = {'event count in year':self.year_group}
         self.year_data = pd.DataFrame(year_all)
         self.chart_title = '年度恐怖袭击数量图'
@@ -79,34 +74,34 @@ class datadel(object):
         self.y_name = '恐怖袭击次数'
         self.filename = 'year_data'
 
-
     #统计每年持续超过24小时的袭击次数比（柱状图、折线图）
     def set_extended_data(self):
-        extended_data1 = pd.crosstab(self.data_list.iyear, self.data_list.extended, margins=True)
-        extended_data2 = extended_data1[1] / extended_data1['All']
-        extended_data3 = {'extended_per': extended_data2}
-        self.extended_data = pd.DataFrame(extended_data3)
+        self.extended = self.data_list[self.data_list['extended'] == 1]
+        extended_data1 = pd.value_counts(self.extended['iyear'].values, sort=False)
+        extended_data2 = {'extended': extended_data1}
+        extended_data = pd.DataFrame(extended_data2)
+        self.extended_data = extended_data.div(self.year_group,axis=0)
         self.chart_title = '年度持续超过24小时的袭击次数占比图'
         self.x_name = '年份'
         self.y_name = '持续超过24小时的袭击次数/袭击次数'
         self.filename = 'extended_data'
 
-    #统计年度各个地区恐怖袭击总次数（柱状图、折线图）
+        # 按地区查看每年持续超过24小时的袭击次数比（柱状图、折线图）
+    def set_region_extended_data(self):
+        region_extended_data = pd.crosstab(self.extended.iyear,self.extended.region_txt, margins=False)
+        self.region_extended_data = region_extended_data.div(self.year_group,axis=0)
+        self.chart_title = '年度持续超过24小时的袭击次数占比图'
+        self.x_name = '年份'
+        self.y_name = '持续超过24小时的袭击次数/袭击次数'
+        self.filename = 'region_extended_data'
+
+    #按地区查看每年恐怖袭击总次数（柱状图、折线图）
     def set_region_year_group(self):
-        if self.region_year_group == None:
-            self.region_year_group = pd.crosstab(self.data_list.iyear,self.data_list.region_txt,margins=False)
+        self.region_year_group = pd.crosstab(self.data_list.iyear,self.data_list.region_txt,margins=False)
         self.chart_title = '年度各个地区恐怖袭击总次数图'
         self.x_name = '年份'
         self.y_name = '恐怖袭击次数'
         self.filename = 'region_year_group'
-
-    # 按地区查看每年恐怖袭击总次数（柱状图、折线图）
-#    def set_region_year(self,region):
-#        if self.region_year_group == None:
-#            self.region_year_group = pd.crosstab(self.data_list.iyear, self.data_list.region_txt, margins=False)
-#        self.region_year = self.region_year_group[region]
-#        self.chart_title = '%s%s' %(region,'地区每年度恐怖袭击总次数图')
-#        self.filename = '%s%s' %(region,'_year')
 
     # 地区恐怖袭击数量-饼图
     def set_region_group(self):
@@ -115,13 +110,10 @@ class datadel(object):
         self.chart_title = '地区恐怖袭击数量占比图'
         self.filename = 'region_group'
 
-    def set_year_region_group(self):
-        self.year_region_group = pd.crosstab(self.data_list.region_txt,self.data_list.iyear,margins=False)
+    # 按年份查看各个地区数量比例，饼图
+    def set_year_region(self, year):
+        self.year_region = self.region_year_group.loc[year]
+        self.chart_title = '%s%s' % (year, '年度各地区恐怖袭击数量占比图')
+        self.filename = '%s%s' % (year, '_region')
 
-    #按年份查看各个地区数量比例，饼图
-    def set_year_region(self,year):
-        if self.year_region_group == None:
-            self.set_year_region_group()
-        self.year_region = self.year_region_group[year]
-        self.chart_title = '%s%s' %(year,'年度各地区恐怖袭击数量占比图')
-        self.filename ='%s%s' %(year,'_region')
+

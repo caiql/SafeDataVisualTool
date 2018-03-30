@@ -75,9 +75,15 @@ class MyForm(QMainWindow):
         self.ui.treeWidget.addTopLevelItem(root)
         self.ui.treeWidget.addTopLevelItem(root2)
 
+        makechart.make_bigmap(self.data)
+        makechart.make_yearmap(self.data)
+        makechart.make_year_data_pic(self.data)
         makechart.make_region_year_group_pic(self.data)
-#        makechart.make_region_group_pic(self.data)
-        url_string = "file:///html/region_year_groupbar.html"
+        makechart.make_region_group_pic(self.data)
+        makechart.make_year_region_pic(self.data,1996)
+        makechart.make_extended_data_pic(self.data)
+        makechart.make_region_extended_data_pic(self.data)
+        url_string = "file:///html/bigmap.html"
         self.view_html(url_string)
 
     def view_html(self,url_string):

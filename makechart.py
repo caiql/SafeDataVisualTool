@@ -24,7 +24,7 @@ def make_extended_data_pic(data):
     chart.make_nbarchart(data.extended_data,data.chart_title,data.x_name,data.y_name,data.filename)
     chart.make_nline_plots(data.extended_data,data.chart_title,data.x_name,data.y_name,data.filename)
 
-#地区年度恐怖袭击柱状图
+#地区年度恐怖袭击图
 def make_region_year_group_pic(data):
     data.set_region_year_group()
     chart.make_nbarchart(data.region_year_group,data.chart_title,data.x_name,data.y_name,data.filename)
@@ -34,3 +34,14 @@ def make_region_year_group_pic(data):
 def make_region_group_pic(data):
     data.set_region_group()
     chart.make_pie_charts(data.region_group,data.chart_title,data.filename)
+
+#按年份查看各个地区数量占比图
+def make_year_region_pic(data,year):
+    data.set_year_region(year)
+    chart.make_pie_charts(data.year_region,data.chart_title,data.filename)
+
+#按地区查看24小时占比图
+def make_region_extended_data_pic(data):
+    data.set_region_extended_data()
+    chart.make_nbarchart(data.region_extended_data,data.chart_title,data.x_name,data.y_name,data.filename)
+    chart.make_nline_plots(data.region_extended_data,data.chart_title,data.x_name,data.y_name,data.filename)
