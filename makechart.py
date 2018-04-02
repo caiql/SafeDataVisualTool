@@ -55,3 +55,16 @@ def make_region_year_nkill_nwound_pic(data):
     data.set_region_year_nkill_nwound()
     chart.make_nbarchart(data.region_year_nkill_nwound,data.chart_title,data.x_name,data.y_name,data.filename)
     chart.make_nline_plots(data.region_year_nkill_nwound,data.chart_title,data.x_name,data.y_name,data.filename)
+
+def make_region_nkill(data):
+    data.set_region_nkill()
+    chart.make_pie_charts(data.region_nkill,data.chart_title,data.filename)
+
+def make_region_nwound(data):
+    data.set_region_nwound()
+    chart.make_pie_charts(data.region_nwound,data.chart_title,data.filename)
+
+def make_gname(data):
+    data.set_gname()
+    chart.make_nbarchart(data.gname,data.chart_title,data.x_name,data.y_name,data.filename)
+    chart.make_nline_plots(data.gname,data.chart_title,data.x_name,data.y_name,data.filename)

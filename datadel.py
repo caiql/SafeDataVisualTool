@@ -27,6 +27,8 @@ class datadel(object):
         self.year_region = None#按年份查看各个地区数量占比-饼图，dataframe
         self.year_nkill_nwound =None#年度伤亡人数
         self.region_year_nkill_nwound = None#按地区查看年度伤亡人数
+        self.region_nkill = None#查看地区死亡总数比例-饼图
+        self.region_nwound = None#查看地区受伤总数比例-饼图
 
         self.chart_title = None#图表的标题
         self.x_name = None#X轴名称
@@ -118,6 +120,7 @@ class datadel(object):
         self.chart_title = '%s%s' % (year, '年度各地区恐怖袭击数量占比图')
         self.filename = '%s%s' % (year, '_region')
 
+    #年度伤亡人数统计图（柱状图，折线图）3-1、3-2
     def set_year_nkill_nwound(self):
         self.year_nkill_nwound = self.data_list.pivot_table(values=['nkill','nwound'],index='iyear',aggfunc='sum')
         self.x_name = '年份'
@@ -125,6 +128,7 @@ class datadel(object):
         self.chart_title = '年度伤亡人数统计图'
         self.filename = 'year_nkill_nwound'
 
+    #按地区查看年度伤亡人数（柱状图，折线图）3-3、3-4、3-7、3-8
     def set_region_year_nkill_nwound(self):
         self.region_year_nkill_nwound = self.data_list.pivot_table(values=['nkill','nwound'],index='iyear',columns='region_txt',aggfunc='sum')
         self.chart_title = '地区年度死亡人数统计图'
@@ -132,3 +136,23 @@ class datadel(object):
         self.y_name = '死(nkill)/伤(nwound)人数'
         self.filename = 'region_year_nkill_nwound'
 
+    #各地区死亡总人数比例-饼图3-5
+    def set_region_nkill(self):
+        self.region_nkill = self.data_list.pivot_table(values='nkill',index='region_txt',aggfunc='sum').nkill
+        self.chart_title = '各地区死亡总人数比例'
+        self.filename = 'region_nkill'
+
+    #各地区受伤总人数比例-饼图3-6
+    def set_region_nwound(self):
+        self.region_nwound = self.data_list.pivot_table(values='nwound',index='region_txt',aggfunc='sum').nwound
+        self.chart_title = '各地区受伤总人数比例'
+        self.filename = 'region_nwound'
+
+    #
+    def set_gname(self):
+        self.gname = self.data_list.pivot_table(index='iyear',columns='gname',aggfunc='count')
+        print(self.gname)
+        self.chart_title = '恐怖组织年度袭击数量'
+        self.x_name = '年份'
+        self.y_name = '袭击数量'
+        self.filename  = 'gname'
