@@ -45,3 +45,13 @@ def make_region_extended_data_pic(data):
     data.set_region_extended_data()
     chart.make_nbarchart(data.region_extended_data,data.chart_title,data.x_name,data.y_name,data.filename)
     chart.make_nline_plots(data.region_extended_data,data.chart_title,data.x_name,data.y_name,data.filename)
+
+def make_year_nkill_nwound_pic(data):
+    data.set_year_nkill_nwound()
+    chart.make_nbarchart(data.year_nkill_nwound,data.chart_title,data.x_name,data.y_name,data.filename)
+    chart.make_nline_plots(data.year_nkill_nwound,data.chart_title,data.x_name,data.y_name,data.filename)
+
+def make_region_year_nkill_nwound_pic(data):
+    data.set_region_year_nkill_nwound()
+    chart.make_nbarchart(data.region_year_nkill_nwound,data.chart_title,data.x_name,data.y_name,data.filename)
+    chart.make_nline_plots(data.region_year_nkill_nwound,data.chart_title,data.x_name,data.y_name,data.filename)
