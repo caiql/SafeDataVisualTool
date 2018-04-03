@@ -87,7 +87,9 @@ class MyForm(QMainWindow):
         #makechart.make_region_year_nkill_nwound_pic(self.data)
         #makechart.make_region_nkill(self.data)
         #makechart.make_region_nwound(self.data)
-        url_string = "file:///html/region_nkillpie.html"
+        #makechart.make_gname(self.data)
+        makechart.make_success(self.data)
+        url_string = "file:///html/successline.html"
         self.view_html(url_string)
 
     def view_html(self,url_string):

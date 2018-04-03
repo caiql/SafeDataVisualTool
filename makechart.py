@@ -68,3 +68,8 @@ def make_gname(data):
     data.set_gname()
     chart.make_nbarchart(data.gname,data.chart_title,data.x_name,data.y_name,data.filename)
     chart.make_nline_plots(data.gname,data.chart_title,data.x_name,data.y_name,data.filename)
+
+def make_success(data):
+    data.set_success()
+    chart.make_nbarchart(data.success,data.chart_title,data.x_name,data.y_name,data.filename)
+    chart.make_nline_plots(data.success,data.chart_title,data.x_name,data.y_name,data.filename)

@@ -29,6 +29,8 @@ class datadel(object):
         self.region_year_nkill_nwound = None#按地区查看年度伤亡人数
         self.region_nkill = None#查看地区死亡总数比例-饼图
         self.region_nwound = None#查看地区受伤总数比例-饼图
+        self.gname = None
+        self.success = None
 
         self.chart_title = None#图表的标题
         self.x_name = None#X轴名称
@@ -128,7 +130,7 @@ class datadel(object):
         self.chart_title = '年度伤亡人数统计图'
         self.filename = 'year_nkill_nwound'
 
-    #按地区查看年度伤亡人数（柱状图，折线图）3-3、3-4、3-7、3-8
+    #按地区查看年度伤亡人数（柱状图，折线图）3-3、3-4、3-7、3-8,列名待重置
     def set_region_year_nkill_nwound(self):
         self.region_year_nkill_nwound = self.data_list.pivot_table(values=['nkill','nwound'],index='iyear',columns='region_txt',aggfunc='sum')
         self.chart_title = '地区年度死亡人数统计图'
@@ -148,11 +150,19 @@ class datadel(object):
         self.chart_title = '各地区受伤总人数比例'
         self.filename = 'region_nwound'
 
-    #
+    #各个恐怖组织年度袭击数量，数量太多
     def set_gname(self):
-        self.gname = self.data_list.pivot_table(index='iyear',columns='gname',aggfunc='count')
-        print(self.gname)
+        self.gname = pd.crosstab(self.data_list.iyear,self.data_list.gname)
         self.chart_title = '恐怖组织年度袭击数量'
         self.x_name = '年份'
         self.y_name = '袭击数量'
         self.filename  = 'gname'
+
+    #袭击成败年度数量,列名待重置
+    def set_success(self):
+        self.success = pd.crosstab(self.data_list.iyear,self.data_list.success,margins=True)
+        self.success.drop('All',inplace=True)
+        self.chart_title = '袭击成败数量统计图'
+        self.x_name = '年份'
+        self.y_name = '袭击数量'
+        self.filename = 'success'
