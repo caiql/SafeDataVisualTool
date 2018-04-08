@@ -109,7 +109,7 @@ class MyForm(QMainWindow):
         #makechart.make_year_nkill_nwound_pic(self.data)
         #makechart.make_region_year_nkill_nwound_pic(self.data)
         #makechart.make_region_nkill_nwound_pic(self.data)
-        #makechart.make_gname(self.data)
+        makechart.make_gname(self.data)
         #makechart.make_success(self.data)
         #makechart.make_region_success(self.data)
         #makechart.make_region_success_group(self.data)

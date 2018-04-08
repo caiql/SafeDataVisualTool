@@ -70,6 +70,8 @@ def make_gname(data):
     data.set_gname()
     chart.make_nbarchart(data.gname,data.chart_title,data.x_name,data.y_name,data.filename)
     chart.make_nline_plots(data.gname,data.chart_title,data.x_name,data.y_name,data.filename)
+    data.set_gname_group()
+    chart.make_pie_charts(data.gname_group,data.chart_title,data.filename)
 
 def make_success(data):
     data.set_success()
@@ -96,3 +98,6 @@ def make_region_suicide_group(data):
 def make_attacktype(data):
     data.set_attacktype()
     chart.make_bar_linechart(data.attacktype,data.chart_title,data.x_name,data.y_name,data.filename)
+    data.set_attacktype_group()
+    chart.make_pie_charts(data.attacktype_group,data.chart_title,data.filename)
+

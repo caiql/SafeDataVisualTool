@@ -150,11 +150,22 @@ class datadel(object):
 
     #各个恐怖组织年度袭击数量，数量太多,4-1
     def set_gname(self):
-        self.gname = pd.crosstab(self.data_list.iyear,self.data_list.gname)
+        #self.gname = pd.crosstab(self.data_list.iyear,self.data_list.gname,margins=True)
+        self.gname = pd.crosstab(self.data_list.gname,self.data_list.iyear,margins=True)
+        if len(self.gname.index) > 800:
+            self.gname = self.gname[self.gname.All > 5]
+        self.gname_group = self.gname.All
+        self.gname.drop('All',axis=1,inplace=True)
         self.chart_title = '恐怖组织年度袭击数量图'
         self.x_name = '年份'
         self.y_name = '袭击数量'
         self.filename  = 'gname'
+
+    #各个恐怖组织袭击数量占比饼图
+    def set_gname_group(self):
+        self.gname_group.drop('All',inplace=True)
+        self.chart_title = '恐怖组织袭击数量占比图'
+        self.filename = 'gname_group'
 
     #袭击成败年度数量,5-1
     def set_success(self):

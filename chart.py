@@ -36,11 +36,11 @@ def make_bar_linechart(dataset,title,x_name,y_name,filename):
 
 def make_nbarchart(dataset,title,x_name,y_name,filename):
     data_bn = []
-    for columns in dataset.columns:
+    for index in dataset.index:
         tr_x = Bar(
-            x=dataset.index,
-            y=dataset[columns].values,
-            name=columns
+            x=dataset.columns,
+            y=dataset.ix[index].values,
+            name=index
         )
         data_bn.append(tr_x)
     layout = Layout(title=title, xaxis={'title': x_name}, yaxis={'title': y_name})
@@ -50,11 +50,11 @@ def make_nbarchart(dataset,title,x_name,y_name,filename):
 
 def make_nline_plots(dataset,tiltle,x_name,y_name,filename):
     data_ln = []
-    for columns in dataset.columns:
+    for index in dataset.index:
         tr_x = Scatter(
-            x=dataset.index,
-            y=dataset[columns].values,
-            name=columns
+            x=dataset.columns,
+            y=dataset.ix[index].values,
+            name=index
         )
         data_ln.append(tr_x)
     layout = Layout(title=tiltle, xaxis={'title': x_name}, yaxis={'title': y_name})
