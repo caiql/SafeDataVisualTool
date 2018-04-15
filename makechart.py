@@ -27,11 +27,11 @@ def make_extended_data_pic(data):
     chart.make_bar_linechart(data.extended_data,data.chart_title,data.x_name,data.y_name,data.filename)
 
 #地区年度恐怖袭击图
-def make_region_year_group_pic(data):
-    data.set_region_year_group()
-    #chart.make_nbarchart(data.region_year_group,data.chart_title,data.x_name,data.y_name,data.filename)
-    #chart.make_nline_plots(data.region_year_group,data.chart_title,data.x_name,data.y_name,data.filename)
-    chart.make_bar_linechart(data.region_year_group,data.chart_title,data.x_name,data.y_name,data.filename)
+def make_region_year_pic(data):
+    data.set_region_year()
+    #chart.make_nbarchart(data.region_year,data.chart_title,data.x_name,data.y_name,data.filename)
+    #chart.make_nline_plots(data.region_year,data.chart_title,data.x_name,data.y_name,data.filename)
+    chart.make_bar_linechart(data.region_year,data.chart_title,data.x_name,data.y_name,data.filename)
 
 #各个地区数量占比饼图
 def make_region_group_pic(data):
@@ -75,8 +75,6 @@ def make_gname(data):
 
 def make_success(data):
     data.set_success()
-    #chart.make_nbarchart(data.success,data.chart_title,data.x_name,data.y_name,data.filename)
-    #chart.make_nline_plots(data.success,data.chart_title,data.x_name,data.y_name,data.filename)
     chart.make_bar_linechart(data.success,data.chart_title,data.x_name,data.y_name,data.filename)
 
 def make_region_success(data):
@@ -86,6 +84,10 @@ def make_region_success(data):
 def make_region_success_group(data):
     data.set_region_success_group()
     chart.make_pie_charts(data.region_success_group,data.chart_title,data.filename)
+	
+def make_suicide(data):
+    data.set_suicide()
+    chart.make_bar_linechart(data.suicide,data.chart_title,data.x_name,data.y_name,data.filename)
 
 def make_region_suicide(data):
     data.set_region_suicide()
@@ -101,3 +103,34 @@ def make_attacktype(data):
     data.set_attacktype_group()
     chart.make_pie_charts(data.attacktype_group,data.chart_title,data.filename)
 
+def make_region_attacktype(data):
+    data.set_region_attacktype()
+    chart.make_bar_linechart1(data.region_attacktype,data.chart_title,data.x_name,data.y_name,data.filename,data.La)
+
+def make_region_attacktype_group(data):
+    data.set_region_attacktype_group()
+    chart.make_pie_charts1(data.region_attacktype_group,data.Lp,data.chart_title,data.filename)
+
+def make_attackwhy(data):
+    data.set_attackwhy()
+    chart.make_bar_linechart(data.attackwhy,data.chart_title,data.x_name,data.y_name,data.filename)
+    data.set_attackwhy_group()
+    chart.make_pie_charts(data.attackwhy_group,data.chart_title,data.filename)
+
+def make_region_attackwhy(data):
+    data.set_region_attackwhy()
+    chart.make_bar_linechart1(data.region_attackwhy,data.chart_title,data.x_name,data.y_name,data.filename,data.La)
+    data.set_region_attackwhy_group()
+    chart.make_pie_charts1(data.region_attackwhy_group,data.Lp,data.chart_title,data.filename)
+
+def make_targtype(data):
+    data.set_targtype()
+    chart.make_bar_linechart(data.targtype,data.chart_title,data.x_name,data.y_name,data.filename)
+    data.set_targtype_group()
+    chart.make_pie_charts(data.targtype_group,data.chart_title,data.filename)
+
+def make_region_targtype(data):
+    data.set_region_targtype()
+    chart.make_bar_linechart1(data.region_targtype,data.chart_title,data.x_name,data.y_name,data.filename,data.La)
+    data.set_region_targtype_group()
+    chart.make_pie_charts1(data.region_targtype_group,data.Lp,data.chart_title,data.filename)

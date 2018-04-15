@@ -81,8 +81,8 @@ class Ui_MainWindow(object):
 
 #属性展示框
         self.treeWidget = QtWidgets.QTreeWidget(self.centralwidget)
-        self.treeWidget.setMinimumSize(QtCore.QSize(150, 300))
-        self.treeWidget.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.treeWidget.setMinimumSize(QtCore.QSize(200, 300))
+        self.treeWidget.setMaximumSize(QtCore.QSize(200, 16777215))
         self.treeWidget.setObjectName("treeWidget")
         self.treeWidget.headerItem().setText(0, "样式选择")
         self.verticalLayout.addWidget(self.treeWidget)

@@ -2,7 +2,7 @@ import plotly.plotly
 from plotly.graph_objs import *
 
 
-def make_mapchart(lat, lon, text, filename='html/bigmap.html', year=0):
+def make_mapchart(lat, lon, text, filename='html/0/bigmap.html', year=0):
     if year == 0:
         title = '所有恐怖袭击数据(经纬度、国家、死亡总数、发生袭击的次数)'
     else:
@@ -14,21 +14,43 @@ def make_mapchart(lat, lon, text, filename='html/bigmap.html', year=0):
     fig = dict(data=data, layout=layout)
     plotly.offline.plot(fig,filename=filename,auto_open=False)
 
-def make_bar_linechart(dataset,title,x_name,y_name,filename):
+def make_bar_linechart(dataset_all,title,x_name,y_name,filename):
     data_bl = []
-    for columns in dataset.columns:
-        tr_x = Bar(
-            x=dataset.index,
-            y=dataset[columns].values,
-            name=columns
-        )
-        tr_y = Scatter(
-            x=dataset.index,
-            y=dataset[columns].values,
-            name=columns
-        )
-        data_bl.append(tr_x)
-        data_bl.append(tr_y)
+    for dataset in dataset_all:
+        for columns in dataset.columns:
+            tr_x = Bar(
+                x=dataset.index,
+                y=dataset[columns].values,
+                name=columns
+            )
+            tr_y = Scatter(
+                x=dataset.index,
+                y=dataset[columns].values,
+                name=columns
+            )
+            data_bl.append(tr_x)
+            data_bl.append(tr_y)
+    layout = Layout(title=title, xaxis={'title': x_name}, yaxis={'title': y_name})
+    fig = Figure(data=data_bl, layout=layout)
+    filename = '%s%s%s' % ('html/', filename, 'bar_line.html')
+    plotly.offline.plot(fig, filename=filename, auto_open=False)
+
+def make_bar_linechart1(dataset_all,title,x_name,y_name,filename,La_all):
+    data_bl = []
+    for dataset,La in zip(dataset_all,La_all):
+        for columns,x in zip(dataset.columns,La):
+            tr_x = Bar(
+                x=dataset.index,
+                y=dataset[columns].values,
+                name=x
+            )
+            tr_y = Scatter(
+                x=dataset.index,
+                y=dataset[columns].values,
+                name=x
+            )
+            data_bl.append(tr_x)
+            data_bl.append(tr_y)
     layout = Layout(title=title, xaxis={'title': x_name}, yaxis={'title': y_name})
     fig = Figure(data=data_bl, layout=layout)
     filename = '%s%s%s' % ('html/', filename, 'bar_line.html')
@@ -65,9 +87,9 @@ def make_nline_plots(dataset,tiltle,x_name,y_name,filename):
 def make_pie_charts(dataset,title,filename):
     data_g = []
     tr_p = Pie(
-    labels = dataset.index,
-    values = dataset.values,
-    sort = False
+        labels = dataset.index,
+        values = dataset.values,
+        sort = False
     )
     data_g.append(tr_p)
     layout = Layout(title=title)
@@ -75,28 +97,15 @@ def make_pie_charts(dataset,title,filename):
     filename = '%s%s%s' % ('html/', filename, 'pie.html')
     plotly.offline.plot(fig, filename=filename, auto_open=False)
 
-def make_barchart(x, y, name, title, x_name, y_name, filename):
-    data_b = []
-    tr_y1 = Bar(
-        x=x,
-        y=y,
-        name=name
+def make_pie_charts1(dataset,Lp,title,filename):
+    data_g = []
+    tr_p = Pie(
+        labels = Lp,
+        values = dataset.values,
+        sort = False
     )
-    data_b.append(tr_y1)
-    layout = Layout(title=title, xaxis={'title': x_name}, yaxis={'title': y_name})
-    fig = Figure(data=data_b, layout=layout)
-    filename = '%s%s%s' % ('html/', filename, 'bar.html')
-    plotly.offline.plot(fig, filename=filename,auto_open=False)
-
-def make_line_plots(x, y, name, title, x_name, y_name, filename):
-    data_l = []
-    tr_x = Scatter(
-        x=x,
-        y=y,
-        name=name
-    )
-    data_l.append(tr_x)
-    layout = Layout(title=title, xaxis={'title': x_name}, yaxis={'title': y_name})
-    fig = Figure(data=data_l, layout=layout)
-    filename = '%s%s%s' % ('html/', filename, 'line.html')
-    plotly.offline.plot(fig, filename=filename,auto_open=False)
+    data_g.append(tr_p)
+    layout = Layout(title=title)
+    fig = Figure(data=data_g, layout=layout)
+    filename = '%s%s%s' % ('html/', filename, 'pie.html')
+    plotly.offline.plot(fig, filename=filename, auto_open=False)
