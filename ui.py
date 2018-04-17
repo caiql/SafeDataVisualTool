@@ -90,12 +90,48 @@ class MyForm(QMainWindow):
         child4 = QTreeWidgetItem(root5)
         child4.setText(0, '地区四种恐怖袭击性质数量占比饼图')
 
+        root6 = QTreeWidgetItem(self.ui.treeWidget)
+        root6.setText(0, '恐怖袭击性质统计分析')
+        child1 = QTreeWidgetItem(root6)
+        child1.setText(0, '年度四种恐怖袭击性质数量图')
+        child2 = QTreeWidgetItem(root6)
+        child2.setText(0, '四种恐怖袭击性质数量占比饼图')
+        child3 = QTreeWidgetItem(root6)
+        child3.setText(0, '地区年度四种恐怖袭击性质数量图')
+        child4 = QTreeWidgetItem(root6)
+        child4.setText(0, '地区四种恐怖袭击性质数量占比饼图')
+
+        root7 = QTreeWidgetItem(self.ui.treeWidget)
+        root7.setText(0, '恐怖袭击性质统计分析')
+        child1 = QTreeWidgetItem(root7)
+        child1.setText(0, '年度四种恐怖袭击性质数量图')
+        child2 = QTreeWidgetItem(root7)
+        child2.setText(0, '四种恐怖袭击性质数量占比饼图')
+        child3 = QTreeWidgetItem(root7)
+        child3.setText(0, '地区年度四种恐怖袭击性质数量图')
+        child4 = QTreeWidgetItem(root7)
+        child4.setText(0, '地区四种恐怖袭击性质数量占比饼图')
+
+        root8 = QTreeWidgetItem(self.ui.treeWidget)
+        root8.setText(0, '恐怖袭击性质统计分析')
+        child1 = QTreeWidgetItem(root8)
+        child1.setText(0, '年度四种恐怖袭击性质数量图')
+        child2 = QTreeWidgetItem(root8)
+        child2.setText(0, '四种恐怖袭击性质数量占比饼图')
+        child3 = QTreeWidgetItem(root8)
+        child3.setText(0, '地区年度四种恐怖袭击性质数量图')
+        child4 = QTreeWidgetItem(root8)
+        child4.setText(0, '地区四种恐怖袭击性质数量占比饼图')
+
         self.ui.treeWidget.addTopLevelItem(self.root)
         self.ui.treeWidget.addTopLevelItem(root1)
         self.ui.treeWidget.addTopLevelItem(root2)
         self.ui.treeWidget.addTopLevelItem(root3)
         self.ui.treeWidget.addTopLevelItem(root4)
         self.ui.treeWidget.addTopLevelItem(root5)
+        self.ui.treeWidget.addTopLevelItem(root6)
+        self.ui.treeWidget.addTopLevelItem(root7)
+        self.ui.treeWidget.addTopLevelItem(root8)
 
         self.ui.pushButton.clicked.connect(self.open_file)
         self.ui.treeWidget.clicked.connect(self.treeselect)
@@ -176,6 +212,39 @@ class MyForm(QMainWindow):
                     string = '5/region_attackwhy_grouppie.html'
                 else:
                     string ='null.html'
+            elif par_index == 6:
+                if cur_index == 0:
+                    string = '6/attackwhybar_line.html'
+                elif cur_index == 1:
+                    string = '6/attackwhy_grouppie.html'
+                elif cur_index == 2:
+                    string = '6/region_attackwhybar_line.html'
+                elif cur_index == 3:
+                    string = '6/region_attackwhy_grouppie.html'
+                else:
+                    string ='null.html'
+            elif par_index == 7:
+                if cur_index == 0:
+                    string = '7/attackwhybar_line.html'
+                elif cur_index == 1:
+                    string = '7/attackwhy_grouppie.html'
+                elif cur_index == 2:
+                    string = '7/region_attackwhybar_line.html'
+                elif cur_index == 3:
+                    string = '7/region_attackwhy_grouppie.html'
+                else:
+                    string ='null.html'
+            elif par_index == 8:
+                if cur_index == 0:
+                    string = '8/attackwhybar_line.html'
+                elif cur_index == 1:
+                    string = '8/attackwhy_grouppie.html'
+                elif cur_index == 2:
+                    string = '8/region_attackwhybar_line.html'
+                elif cur_index == 3:
+                    string = '8/region_attackwhy_grouppie.html'
+                else:
+                    string ='null.html'
         else:
             QMessageBox.critical(None, "Critical", "总数据未导入！")
         try:
@@ -238,8 +307,11 @@ class thread1(QThread):
             #makechart.make_region_attacktype_group(self.data)
             #makechart.make_attackwhy(self.data)
             #makechart.make_region_attackwhy(self.data)
-            makechart.make_targtype(self.data)
-            makechart.make_region_targtype(self.data)
+            #makechart.make_targtype(self.data)
+            #makechart.make_region_targtype(self.data)
+            #makechart.make_weaptype(self.data)
+            #makechart.make_region_weaptype(self.data)
+            makechart.make_ransompaid(self.data)
 
         except Exception as e:
             print("%s---%s" % (sys._getframe().f_lineno, e))

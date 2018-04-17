@@ -73,7 +73,7 @@ class datadel(object):
     #所有年度恐怖袭击数量（柱状图、折线图）2-1
     def set_year_data(self):
         self.year_data = []
-        year_all = {'event count in year':self.year}
+        year_all = {'All':self.year}
         self.year_data1 = pd.DataFrame(year_all)
         self.year_data.append(self.year_data1)
         self.chart_title = '年度恐怖袭击数量图'
@@ -521,28 +521,249 @@ class datadel(object):
         self.filename = '6/region_targtype_group'
 
     def set_weaptype(self):
-        pass
+        self.weaptype = []
+        weaptype1 = pd.crosstab(self.data_list.iyear, self.data_list.weaptype1_txt,margins=True)
+        weaptype2 = pd.crosstab(self.data_list.iyear, self.data_list.weaptype2_txt,margins=True)
+        weaptype3 = pd.crosstab(self.data_list.iyear, self.data_list.weaptype3_txt,margins=True)
+        weaptype4 = pd.crosstab(self.data_list.iyear, self.data_list.weaptype4_txt,margins=True)
+        weaptype = weaptype1.add(weaptype2.add(weaptype3.add(weaptype4,fill_value=0), fill_value=0), fill_value=0)
+        weaptype1.rename(columns=lambda x: 'type1_' + x, inplace=True)
+        weaptype2.rename(columns=lambda x: 'type2_' + x, inplace=True)
+        weaptype3.rename(columns=lambda x: 'type3_' + x, inplace=True)
+        weaptype4.rename(columns=lambda x: 'type4_' + x, inplace=True)
+        weaptype.rename(columns=lambda x: 'All_' + x, inplace=True)
+        self.weaptype1 = weaptype1.loc['All']
+        self.weaptype2 = weaptype2.loc['All']
+        self.weaptype3 = weaptype3.loc['All']
+        self.weaptype4 = weaptype4.loc['All']
+        weaptype_group = weaptype.loc['All']
+        weaptype_group.drop('All_All',inplace=True)
+        weaptype1.drop('All',inplace=True)
+        weaptype2.drop('All',inplace=True)
+        weaptype3.drop('All',inplace=True)
+        weaptype4.drop('All',inplace=True)
+        weaptype.drop('All',inplace=True)
+        self.weaptype_group = pd.concat([self.weaptype1, self.weaptype2, self.weaptype3, self.weaptype4,weaptype_group])
+        self.weaptype.append(weaptype1)
+        self.weaptype.append(weaptype2)
+        self.weaptype.append(weaptype3)
+        self.weaptype.append(weaptype4)
+        self.weaptype.append(weaptype)
+        self.chart_title = '年度袭击武器类型数量图'
+        self.x_name = '年份'
+        self.y_name = '袭击数量'
+        self.filename = '7/weaptype'
 
     def set_weaptype_group(self):
-        pass
+        self.chart_title = '袭击武器类型数量占比图'
+        self.filename = '7/weaptype_group'
 
     def set_region_weaptype(self):
-        pass
+        self.region_weaptype = []
+        region_weaptype1 = pd.crosstab(self.data_list.iyear,[self.data_list.region_txt, self.data_list.weaptype1_txt], dropna=False)
+        region_weaptype1_group = region_weaptype1.sum()
+        self.region_weaptype.append(region_weaptype1)
+        region_weaptype2 = pd.crosstab(self.data_list.iyear,[self.data_list.region_txt, self.data_list.weaptype2_txt], dropna=False)
+        region_weaptype2_group = region_weaptype2.sum()
+        self.region_weaptype.append(region_weaptype2)
+        region_weaptype3 = pd.crosstab(self.data_list.iyear,[self.data_list.region_txt, self.data_list.weaptype3_txt], dropna=False)
+        region_weaptype3_group = region_weaptype3.sum()
+        self.region_weaptype.append(region_weaptype3)
+        region_weaptype4 = pd.crosstab(self.data_list.iyear, [self.data_list.region_txt, self.data_list.weaptype4_txt],dropna=False)
+        region_weaptype4_group = region_weaptype4.sum()
+        self.region_weaptype.append(region_weaptype4)
+        self.region_weaptype.append(self.region_year2)
+        self.region_weaptype_group = pd.concat([region_weaptype1_group, region_weaptype2_group, region_weaptype3_group,region_weaptype4_group])
+        self.weaptype1.drop('type1_All', inplace=True)
+        self.weaptype2.drop('type2_All', inplace=True)
+        self.weaptype3.drop('type3_All', inplace=True)
+        self.weaptype4.drop('type4_All', inplace=True)
+        L = self.region_group.index
+        L1 = self.weaptype1.index
+        La1 = []
+        L2 = self.weaptype2.index
+        La2 = []
+        L3 = self.weaptype3.index
+        La3 = []
+        L4 = self.weaptype4.index
+        La4 = []
+        self.Lp = []
+        self.La = []
+        for x, y in product(L, L1):
+            str = '%s%s%s' % (x, '_', y)
+            if len(str)>70:
+                str = str[:70]
+            La1.append(str)
+        self.La.append(La1)
+        self.Lp.extend(La1)
+        for x, y in product(L, L2):
+            str = '%s%s%s' % (x, '_', y)
+            if len(str)>70:
+                str = str[:70]
+            La2.append(str)
+        self.La.append(La2)
+        self.Lp.extend(La2)
+        for x, y in product(L, L3):
+            str = '%s%s%s' % (x, '_', y)
+            if len(str)>70:
+                str = str[:70]
+            La3.append(str)
+        self.La.append(La3)
+        self.Lp.extend(La3)
+        for x, y in product(L, L4):
+            str = '%s%s%s' % (x, '_', y)
+            if len(str)>70:
+                str = str[:70]
+            La4.append(str)
+        self.La.append(La4)
+        self.Lp.extend(La4)
+        self.La.append(L)
+        self.chart_title = '地区年度袭击武器类型数量图'
+        self.x_name = '年份'
+        self.y_name = '袭击数量'
+        self.filename = '7/region_weaptype'
 
     def set_region_weaptype_group(self):
-        pass
-
-    def set_ransom(self):
-        pass
+        self.chart_title = '地区年度袭击武器类型数量占比图'
+        self.filename = '7/region_weaptype_group'
 
     def set_ransompaid(self):
-        pass
+        self.ransompaid_all = self.data_list[self.data_list['ransompaid']>0]
+        self.ransompaid = []
+        ransompaid = self.ransompaid_all.pivot_table(values='ransompaid',index='iyear',aggfunc='sum',fill_value=0)
+        self.ransompaid.append(ransompaid)
+        self.ransompaid.append(self.year_data1)
+        self.chart_title = '年度已付赎金数量图'
+        self.x_name = '年份'
+        self.y_name = '已付赎金'
+        self.filename = '8/ransompaid'
+
+    def set_region_ransompaid(self):
+        self.region_ransompaid = []
+        region_ransompaid = self.ransompaid_all.pivot_table(values='ransompaid',index='iyear',columns='region_txt',aggfunc='sum',fill_value=0,margins=True)
+        self.region_ransompaid_group = region_ransompaid.loc['All']
+        self.region_ransompaid_group.drop('All',inplace=True)
+        region_ransompaid.drop('All',inplace=True)
+        self.region_ransompaid.append(region_ransompaid)
+        self.chart_title = '地区年度已付赎金数量图'
+        self.x_name = '年份'
+        self.y_name = '已付赎金'
+        self.filename = '8/region_ransompaid'
+
+    def set_region_ransompaid_group(self):
+        self.chart_title = '地区已付赎金数量图'
+        self.filename = '8/region_ransompaid_group'
 
     def set_hostkidoutcome(self):
-        pass
+        self.hostkidoutcome = []
+        hostkidoutcome = pd.crosstab(self.data_list.iyear, self.data_list.hostkidoutcome_txt,margins=True)
+        self.hostkidoutcome_group = hostkidoutcome.loc['All']
+        self.hostkidoutcome_group.drop('All', inplace=True)
+        self.hostkidoutcome_group.rename(columns={'All':'hostkidoutcome_All'},inplace=True)
+        hostkidoutcome.drop('All', inplace=True)
+        self.hostkidoutcome.append(hostkidoutcome)
+        self.chart_title = '年度人质结局数量图'
+        self.x_name = '年份'
+        self.y_name = '袭击数量'
+        self.filename = '8/hostkidoutcome'
 
-    def set_ransom_hostkidoutcome(self):
-        pass
+    def set_hostkidoutcome_group(self):
+        self.chart_title = '人质结局数量占比图'
+        self.filename = '8/hostkidoutcome_group'
+
+    def set_region_hostkidoutcome(self):
+        self.region_hostkidoutcome = []
+        region_hostkidoutcome = pd.crosstab(self.data_list.iyear, [self.data_list.region_txt,self.data_list.hostkidoutcome_txt],dropna=False)
+        self.region_hostkidoutcome_group = region_hostkidoutcome.sum()
+        self.region_hostkidoutcome.append(region_hostkidoutcome)
+        self.region_hostkidoutcome.append(self.region_year2)
+        L = self.region_group.index
+        L1 = self.hostkidoutcome_group.index
+        La1 = []
+        self.Lp_a = []
+        self.La_a = []
+        for x, y in product(L, L1):
+            str = '%s%s%s' % (x, '_', y)
+            La1.append(str)
+        self.La_a.append(La1)
+        self.Lp_a.extend(La1)
+        self.La_a.append(L)
+        self.chart_title = '地区年度人质结局数量图'
+        self.x_name = '年份'
+        self.y_name = '袭击数量/已付赎金'
+        self.filename = '8/region_hostkidoutcome'
+
+    def set_region_hostkidoutcome_group(self):
+        self.chart_title = '地区人质结局数量占比图'
+        self.filename = '8/region_hostkidoutcome_group'
 
     def set_ransompaid_hostkidoutcome(self):
-        pass
+        self.ransompaid.extend(self.hostkidoutcome)
+        self.chart_title = '年度已付赎金与人质结局对比图'
+        self.x_name = '年份'
+        self.y_name = '袭击数量/已付赎金'
+        self.filename = '8/ransompaid_hostkidoutcome'
+
+    def set_region_ransompaid_hostkidoutcome(self):
+        self.region_ransompaid.extend(self.region_hostkidoutcome)
+        L = self.region_ransompaid_group.index
+        self.La = []
+        La1 = []
+        for x in L:
+            str = '%s%s' % ('paid_', x)
+            La1.append(str)
+        self.La.append(La1)
+        self.La.extend(self.La_a)
+        self.chart_title = '地区年度已付赎金与人质结局对比图'
+        self.x_name = '年份'
+        self.y_name = '袭击数量'
+        self.filename = '8/region_ransompaid_hostkidoutcome'
+
+    def set_paid_hostkidoutcome(self):
+        self.paid_hostkidoutcome = []
+        paid_hostkidoutcome = pd.crosstab(self.ransompaid_all.iyear, self.ransompaid_all.hostkidoutcome_txt, margins=True)
+        paid_hostkidoutcome.rename(columns=lambda x: 'paid_' + x, inplace=True)
+        self.paid_hostkidoutcome_group1 = paid_hostkidoutcome.loc['All']
+        self.paid_hostkidoutcome_group1.drop('paid_All', inplace=True)
+        self.paid_hostkidoutcome_group = pd.concat([self.paid_hostkidoutcome_group1,self.hostkidoutcome_group])
+        paid_hostkidoutcome.drop('All', inplace=True)
+        self.paid_hostkidoutcome.append(paid_hostkidoutcome)
+        self.paid_hostkidoutcome.extend(self.hostkidoutcome)
+        self.chart_title = '已付赎金中年度人质结局数量图'
+        self.x_name = '年份'
+        self.y_name = '袭击数量'
+        self.filename = '8/paid_hostkidoutcome'
+
+    def set_paid_hostkidoutcome_group(self):
+        self.chart_title = '已付赎金中人质结局数量占比图'
+        self.filename = '8/paid_hostkidoutcome_group'
+
+    def set_region_paid_hostkidoutcome(self):
+        self.region_paid_hostkidoutcome = []
+        region_paid_hostkidoutcome = pd.crosstab(self.ransompaid_all.iyear, [self.ransompaid_all.region_txt,self.ransompaid_all.hostkidoutcome_txt],dropna=False)
+        region_paid_hostkidoutcome_group = region_paid_hostkidoutcome.sum()
+        self.region_paid_hostkidoutcome_group = pd.concat([region_paid_hostkidoutcome_group,self.region_hostkidoutcome_group])
+        self.region_paid_hostkidoutcome.append(region_paid_hostkidoutcome)
+        self.region_paid_hostkidoutcome.extend(self.region_hostkidoutcome)
+        self.region_paid_hostkidoutcome.append(self.region_year2)
+        L = self.region_group.index
+        L1 = self.paid_hostkidoutcome_group1.index
+        La1 = []
+        La2 = []
+        self.Lp = []
+        self.La = []
+        for x, y in product(L, L1):
+            str = '%s%s%s' % (x, '_', y)
+            La1.append(str)
+        self.La.append(La1)
+        self.Lp.extend(La1)
+        self.La.extend(self.La_a)
+        self.Lp.extend(self.Lp_a)
+        self.chart_title = '已付赎金中地区年度人质结局数量图'
+        self.x_name = '年份'
+        self.y_name = '袭击数量'
+        self.filename = '8/region_paid_hostkidoutcome'
+
+    def set_region_paid_hostkidoutcome_group(self):
+        self.chart_title = '已付赎金中地区人质结局数量占比图'
+        self.filename = '8/region_paid_hostkidoutcome_group'
