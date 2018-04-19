@@ -2,7 +2,7 @@ import plotly.plotly
 from plotly.graph_objs import *
 
 
-def make_mapchart(lat, lon, text, filename='html/0/bigmap.html', year=0):
+def make_mapchart(lat, lon, text, filename='html/0/1bigmap.html', year=0):
     if year == 0:
         title = '所有恐怖袭击数据(经纬度、国家、死亡总数、发生袭击的次数)'
     else:
