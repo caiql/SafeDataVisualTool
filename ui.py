@@ -18,6 +18,7 @@ class MyForm(QMainWindow):
         self.ui.setupUi(self)
         self.move(200,0)
         self.get_data = None
+        self.LOADING = False
 
         self.ui.treeWidget.setColumnCount(1)
         self.ui.treeWidget.setHeaderHidden(True)
@@ -181,6 +182,8 @@ class MyForm(QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.re_pain_file)
         self.ui.pushButton_3.clicked.connect(self.de_pain)
         self.ui.treeWidget.clicked.connect(self.treeselect)
+        self.ui.label_in.clicked.connect(self.set_intr)
+        self.set_html('file:///html/welcome.html')
 
     def treeselect(self):
         # ---获得点击treewidget的index----
@@ -201,10 +204,12 @@ class MyForm(QMainWindow):
         if self.get_data:
             if p_par_index == 0:
                 if par_index == -2:
-                    string =  'null.html'
+                    string =  'null'
+                    self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
                 else:
                     if cur_index == -2:
                         string = '0/1bigmap.html'
+                        self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
                     else:
                         string1 = self.ui.treeWidget.currentItem().text(0)
                         string = '%s%s%s' %('0/', string1 ,'map.html')
@@ -220,12 +225,14 @@ class MyForm(QMainWindow):
                 elif par_index == 4:
                     if cur_index == -2:
                         string = '1/region_yearbar_line.html'
+                        self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
                     else:
                         string1 = self.ui.treeWidget.currentItem().text(0)
                         string = '%s%s%s' % ('1/', string1, '_regionpie.html')
                 elif par_index == 5:
                     if cur_index == -2:
                         string = '1/region_monthbar_line.html'
+                        self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
                     else:
                         string1 = self.ui.treeWidget.currentItem().text(0)
                         string = '%s%s%s' % ('1/', string1, '_regionpie.html')
@@ -238,7 +245,8 @@ class MyForm(QMainWindow):
                 elif par_index == 9:
                     string = '1/country_grouppie.html'
                 else:
-                    string = 'null.html'
+                    string = 'null'
+                    self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
             elif p_par_index == 2:
                 if par_index == 0:
                     string = '2/year_nkill_nwoundbar_line.html'
@@ -249,7 +257,8 @@ class MyForm(QMainWindow):
                 elif par_index == 3:
                     string = '2/region_nkill_nwoundpie.html'
                 else:
-                    string = 'null.html'
+                    string = 'null'
+                    self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
             elif p_par_index == 3:
                 if par_index == 0:
                     string = '3/gnameline.html'
@@ -258,7 +267,8 @@ class MyForm(QMainWindow):
                 elif par_index == 2:
                     string = '3/gname_grouppie.html'
                 else:
-                    string = 'null.html'
+                    string = 'null'
+                    self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
             elif p_par_index == 4:
                 if par_index == 0:
                     string = '4/successbar_line.html'
@@ -293,7 +303,8 @@ class MyForm(QMainWindow):
                 elif par_index == 15:
                     string = '4/region_extended_grouppie.html'
                 else:
-                    string = 'null.html'
+                    string = 'null'
+                    self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
             elif p_par_index == 5:
                 if par_index == 0:
                     string = '5/attackwhybar_line.html'
@@ -304,7 +315,8 @@ class MyForm(QMainWindow):
                 elif par_index == 3:
                     string = '5/region_attackwhy_grouppie.html'
                 else:
-                    string ='null.html'
+                    string ='null'
+                    self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
             elif p_par_index == 6:
                 if par_index == 0:
                     string = '6/targtypebar_line.html'
@@ -315,7 +327,8 @@ class MyForm(QMainWindow):
                 elif par_index == 3:
                     string = '6/region_targtype_grouppie.html'
                 else:
-                    string ='null.html'
+                    string ='null'
+                    self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
             elif p_par_index == 7:
                 if par_index == 0:
                     string = '7/weaptypebar_line.html'
@@ -326,7 +339,8 @@ class MyForm(QMainWindow):
                 elif par_index == 3:
                     string = '7/region_weaptype_grouppie.html'
                 else:
-                    string ='null.html'
+                    string ='null'
+                    self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
             elif p_par_index == 8:
                 if par_index == 0:
                     string = '8/ransompaidbar_line.html'
@@ -355,62 +369,93 @@ class MyForm(QMainWindow):
                 elif par_index == 12:
                     string = '8/region_paid_hostkidoutcome_grouppie.html'
                 else:
-                    string ='null.html'
+                    string ='null'
+                    self.ui.treeWidget.expandItem(self.ui.treeWidget.currentItem())
+            if not self.LOADING:
+                try:
+                    if string != 'null':
+                        self.set_html("file:///html/%s" % string)
+                except Exception as e:
+                    QMessageBox.critical(None, "Critical", "%s" % e)
         else:
             QMessageBox.critical(None, "Critical", "总数据未导入！")
-        try:
-            self.set_html("file:///html/%s" % string)
-        except Exception as e:
-            QMessageBox.critical(None, "Critical", "%s" % e)
 
 
     def open_file(self):
-        self.filename = QFileDialog.getOpenFileName(None, "Open file dialog","/")[0]
-        if self.filename == '':
-            pass
-        else:
-            self.ui.lineEdit.setText(self.filename)
-            self.get_data = thread1(self,self.filename)
-            self.get_data.start()
+        if not self.LOADING:
+            self.filename = QFileDialog.getOpenFileName(None, "Open file dialog", "/")[0]
+            if self.filename == '':
+                pass
+            else:
+                self.ui.lineEdit.setText(self.filename)
+                self.get_data = thread1(self, self.filename)
+                self.get_data.start()
 
     def re_pain_file(self):
         if self.get_data:
-            reply = QMessageBox.question(None,'重新绘图','您选择了重新绘制全部图形，这将需要一定的时间\n您确定要重新绘制全部图形吗',QMessageBox.Yes|QMessageBox.No)
-            if reply == QMessageBox.Yes:
-                self.set_html('file:///html/repaiding.html')
-                self.get_data.re_pain()
-                self.set_html('file:///html/null.html')
+            if not self.LOADING:
+                reply = QMessageBox.question(None, '重新绘图', '您选择了重新绘制全部图形，这将需要一定的时间\n您确定要重新绘制全部图形吗',
+                                             QMessageBox.Yes | QMessageBox.No)
+                if reply == QMessageBox.Yes:
+                    self.LOADING = True
+                    t = self.re_pain(self)
+                    t.sendData.connect(self.show)
+                    t.start()
         else:
             QMessageBox.critical(None, "Critical", "总数据未导入！")
 
+    def show(self,index=-1):
+        if index == 0:
+            self.set_html('file:///html/repaiding.html')
+        elif index == 1:
+            self.set_html('file:///html/ok.html')
+            self.LOADING = False
+
     def de_pain(self):
-        if self.get_data:
-            shutil.rmtree('./html/9')
-            os.mkdir('./html/9')
-            a1 = self.ui.lineEdit_1.text()
-            a2 = self.ui.lineEdit_4.text()
-            a3 = self.ui.lineEdit_3.text()
-            a4 = self.ui.lineEdit_5.text()
-            if a1 != '' and a2 != '':
-                self.get_data.data.de_bar_line(a1,a2,a3,a4)
-                self.set_html('file:///html/9/define_bar_line.html')
-            elif a1 != '':
-                self.get_data.data.de_pie(a1,a3)
-                self.set_html('file:///html/9/define_pie.html')
-            elif a2 != '':
-                self.get_data.data.de_pie(a2,a4)
-                self.set_html('file:///html/9/define_pie.html')
+        if not self.LOADING:
+            if self.get_data:
+                shutil.rmtree('./html/9')
+                os.mkdir('./html/9')
+                a1 = self.ui.lineEdit_1.text()
+                a2 = self.ui.lineEdit_4.text()
+                a3 = self.ui.lineEdit_3.text()
+                a4 = self.ui.lineEdit_5.text()
+                if a1 != '' and a2 != '':
+                    self.get_data.data.de_bar_line(a1, a2, a3, a4)
+                    self.set_html('file:///html/9/define_bar_line.html')
+                elif a1 != '':
+                    self.get_data.data.de_pie(a1, a3)
+                    self.set_html('file:///html/9/define_pie.html')
+                elif a2 != '':
+                    self.get_data.data.de_pie(a2, a4)
+                    self.set_html('file:///html/9/define_pie.html')
+                else:
+                    QMessageBox.critical(None, "Critical", "请输入至少一个属性！")
             else:
-                QMessageBox.critical(None, "Critical", "请输入至少一个属性！")
-        else:
-            QMessageBox.critical(None, "Critical", "总数据未导入！")
+                QMessageBox.critical(None, "Critical", "总数据未导入！")
 
     def set_html(self,url_string):
         self.ui.webView.load(QUrl(url_string))
         self.ui.webView.show()
 
+    def set_intr(self):
+        self.set_html('file:///html/introduction.html')
+
+    class re_pain(QThread):
+        sendData = pyqtSignal(int)
+        def __init__(self,MyForm):
+            QThread.__init__(self)
+            self.MyForm = MyForm
+
+        def __del__(self):
+            self.wait()
+
+        def run(self):
+            self.sendData.emit(0)
+            self.MyForm.get_data.re_pain()
+            self.sendData.emit(1)
+
 class thread1(QThread):
-    sendData = pyqtSignal(int)
     def __init__(self,MyForm,data_path=""):
         QThread.__init__(self)
         self.MyForm = MyForm
@@ -422,7 +467,6 @@ class thread1(QThread):
         self.wait()
 
     def run(self):
-        self.sendData.emit(0)
         try:
             self.CalcSha1()
             self.data = datadel.datadel(self.path)
@@ -441,8 +485,6 @@ class thread1(QThread):
                 self.data.make_chart()
         except Exception as e:
             print("%s---%s" % (sys._getframe().f_lineno, e))
-            self.sendData.emit(-1)
-        self.sendData.emit(1)
 
     def re_pain(self):
         try:
@@ -452,24 +494,30 @@ class thread1(QThread):
             print("%s---%s" % (sys._getframe().f_lineno, e))
 
     def re_file(self):
-        shutil.rmtree('./html/0')
-        os.mkdir('./html/0')
-        shutil.rmtree('./html/1')
-        os.mkdir('./html/1')
-        shutil.rmtree('./html/2')
-        os.mkdir('./html/2')
-        shutil.rmtree('./html/3')
-        os.mkdir('./html/3')
-        shutil.rmtree('./html/4')
-        os.mkdir('./html/4')
-        shutil.rmtree('./html/5')
-        os.mkdir('./html/5')
-        shutil.rmtree('./html/6')
-        os.mkdir('./html/6')
-        shutil.rmtree('./html/7')
-        os.mkdir('./html/7')
-        shutil.rmtree('./html/8')
-        os.mkdir('./html/8')
+        try:
+            shutil.rmtree('./html/0')
+            shutil.rmtree('./html/1')
+            shutil.rmtree('./html/2')
+            shutil.rmtree('./html/3')
+            shutil.rmtree('./html/4')
+            shutil.rmtree('./html/5')
+            shutil.rmtree('./html/6')
+            shutil.rmtree('./html/7')
+            shutil.rmtree('./html/8')
+        except:
+            pass
+        try:
+            os.mkdir('./html/0')
+            os.mkdir('./html/1')
+            os.mkdir('./html/2')
+            os.mkdir('./html/3')
+            os.mkdir('./html/4')
+            os.mkdir('./html/5')
+            os.mkdir('./html/6')
+            os.mkdir('./html/7')
+            os.mkdir('./html/8')
+        except:
+            pass
 
     def CalcSha1(self):
         with open('sha1') as fr:

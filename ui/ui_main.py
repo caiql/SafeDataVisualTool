@@ -108,7 +108,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setMaximumSize(QtCore.QSize(100, 40))
         font = QtGui.QFont()
         font.setFamily("Agency FB")
-        font.setPointSize(12)
+        font.setPointSize(10)
         self.pushButton_2.setFont(font)
         self.pushButton_2.setObjectName("pushButton_2")
         self.horizontalLayout_3.addWidget(self.pushButton_2)
@@ -255,10 +255,19 @@ class Ui_MainWindow(object):
         self.pushButton_3.setFont(font)
         self.pushButton_3.setObjectName("pushButton_3")
         self.horizontalLayout_5.addWidget(self.pushButton_3)
-
         self.horizontalLayout_3.addLayout(self.horizontalLayout_5)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
 
+        self.label_in = QtWidgets.QCommandLinkButton(self.centralwidget)
+        self.label_in.setMinimumSize(QtCore.QSize(80,40))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(9)
+        font.setWeight(40)
+        font.setUnderline(True)
+        self.label_in.setFont(font)
+        self.label_in.setObjectName("label_in")
+        self.horizontalLayout_3.addWidget(self.label_in)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
         MainWindow.setCentralWidget(self.centralwidget)
 
 #菜单栏
@@ -283,12 +292,13 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "选择数据文件"))
         self.label_2.setText(_translate("MainWindow", "属性选择："))
         self.pushButton_2.setText(_translate("MainWindow", "全部重新绘图"))
-        self.label_6.setText(_translate("MainWindow", "     自定义统计分析："))
-        self.label_1.setText(_translate("MainWindow", "    属性一："))
-        self.label_3.setText(_translate("MainWindow", "    属性一名称："))
-        self.label_4.setText(_translate("MainWindow", "    属性二："))
-        self.label_5.setText(_translate("MainWindow", "    属性二名称："))
+        self.label_6.setText(_translate("MainWindow", "    自定义统计分析："))
+        self.label_1.setText(_translate("MainWindow", "   属性一："))
+        self.label_3.setText(_translate("MainWindow", "   属性一名称："))
+        self.label_4.setText(_translate("MainWindow", "   属性二："))
+        self.label_5.setText(_translate("MainWindow", "   属性二名称："))
         self.pushButton_3.setText(_translate("MainWindow", "分析绘图"))
+        self.label_in.setText(_translate('MainWindow','   用户指引'))
 
 from PyQt5.QtWebEngineWidgets import *
 
