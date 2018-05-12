@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0ce03d0-bfc1-49e7-98e3-e817f5f892b5" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/ui_main.ui" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/自动转换---ui》》》py.bat" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/datadel.py" afterPath="$PROJECT_DIR$/datadel.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sha1" afterPath="$PROJECT_DIR$/sha1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui.py" afterPath="$PROJECT_DIR$/ui.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/ui_main.py" afterPath="$PROJECT_DIR$/ui/ui_main.py" />
@@ -19,7 +22,7 @@
     <SUITE FILE_PATH="coverage/SafeDataVisualTool$testt.coverage" NAME="testt Coverage Results" MODIFIED="1521634295118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SafeDataVisualTool$test.coverage" NAME="test Coverage Results" MODIFIED="1521465785283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SafeDataVisualTool$read_file.coverage" NAME="read_file Coverage Results" MODIFIED="1521122933162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SafeDataVisualTool$ui.coverage" NAME="ui Coverage Results" MODIFIED="1524705509053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SafeDataVisualTool$ui.coverage" NAME="ui Coverage Results" MODIFIED="1526137202675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SafeDataVisualTool$chart.coverage" NAME="chart Coverage Results" MODIFIED="1521957070310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SafeDataVisualTool$testpl.coverage" NAME="testpl Coverage Results" MODIFIED="1524062956831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -32,32 +35,35 @@
       <file leaf-file-name="ui.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2242">
-              <caret line="457" column="23" lean-forward="true" selection-start-line="457" selection-start-column="23" selection-end-line="457" selection-end-column="23" />
+            <state relative-caret-position="57">
+              <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="14" />
               <folding>
-                <element signature="e#0#17#0" expanded="true" />
-                <element signature="e#7479#7713#0" expanded="false" />
-                <element signature="e#7740#7817#0" expanded="false" />
-                <element signature="e#7893#8405#0" expanded="false" />
-                <element signature="e#8457#10137#0" expanded="false" />
-                <element signature="e#10189#10721#0" expanded="false" />
-                <element signature="e#10773#11155#0" expanded="false" />
-                <element signature="e#11207#12872#0" expanded="false" />
-                <element signature="e#12924#13434#0" expanded="false" />
-                <element signature="e#13486#13992#0" expanded="false" />
-                <element signature="e#14044#14550#0" expanded="false" />
-                <element signature="e#14602#16085#0" expanded="false" />
-                <element signature="e#16135#16354#0" expanded="false" />
+                <element signature="e#7025#16228#0" expanded="false" />
+                <element signature="e#7277#7511#0" expanded="false" />
+                <element signature="e#7538#7615#0" expanded="false" />
+                <element signature="e#7691#8203#0" expanded="false" />
+                <element signature="e#8255#9935#0" expanded="false" />
+                <element signature="e#9987#10519#0" expanded="false" />
+                <element signature="e#10571#10953#0" expanded="false" />
+                <element signature="e#11005#12670#0" expanded="false" />
+                <element signature="e#12722#13232#0" expanded="false" />
+                <element signature="e#13284#13790#0" expanded="false" />
+                <element signature="e#13842#14348#0" expanded="false" />
+                <element signature="e#14400#15883#0" expanded="false" />
+                <element signature="e#15933#16152#0" expanded="false" />
+                <element signature="e#16264#16733#0" expanded="false" />
+                <element signature="e#18564#18633#0" expanded="false" />
+                <element signature="e#19311#19322#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="datadel.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="datadel.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/datadel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="55" column="68" lean-forward="false" selection-start-line="55" selection-start-column="68" selection-end-line="55" selection-end-column="68" />
+            <state relative-caret-position="209">
+              <caret line="342" column="35" lean-forward="true" selection-start-line="342" selection-start-column="35" selection-end-line="342" selection-end-column="35" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -65,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chart.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chart.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-114">
-              <caret line="4" column="52" lean-forward="false" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
+            <state relative-caret-position="133">
+              <caret line="8" column="69" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -78,8 +84,8 @@
       <file leaf-file-name="ui_main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/ui_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="703">
-              <caret line="293" column="69" lean-forward="true" selection-start-line="293" selection-start-column="69" selection-end-line="293" selection-end-column="69" />
+            <state relative-caret-position="5320">
+              <caret line="280" column="15" lean-forward="false" selection-start-line="280" selection-start-column="8" selection-end-line="280" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -97,7 +103,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>region_year_nkill_nwound</find>
       <find>region_nkill_nwound_</find>
       <find>self.gname</find>
       <find>self.year_data1</find>
@@ -127,6 +132,7 @@
       <find>self.paid_hostkidoutcome</find>
       <find>self.data</find>
       <find>cur_index</find>
+      <find>set_intr</find>
     </findStrings>
     <replaceStrings>
       <replace>par_index</replace>
@@ -147,9 +153,10 @@
         <option value="$PROJECT_DIR$/makechart.py" />
         <option value="$PROJECT_DIR$/testpl.py" />
         <option value="$PROJECT_DIR$/chart.py" />
-        <option value="$PROJECT_DIR$/datadel.py" />
-        <option value="$PROJECT_DIR$/ui.py" />
         <option value="$PROJECT_DIR$/ui/ui_main.py" />
+        <option value="$PROJECT_DIR$/ui.spec" />
+        <option value="$PROJECT_DIR$/ui.py" />
+        <option value="$PROJECT_DIR$/datadel.py" />
       </list>
     </option>
   </component>
@@ -191,30 +198,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SafeDataVisualTool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SafeDataVisualTool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../beifen/SafeDataVisualTool" />
   </component>
   <component name="RunDashboard">
@@ -577,11 +570,11 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23538704" sideWeight="0.8916545" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3870458" sideWeight="0.8916545" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38546604" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34755135" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -626,13 +619,11 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/makechart.py" />
-    <entry file="file://$PROJECT_DIR$/mapchart.py" />
     <entry file="file://$PROJECT_DIR$/makechart.py" />
     <entry file="file://$PROJECT_DIR$/datadel.py" />
     <entry file="file://$PROJECT_DIR$/mapchart.py" />
@@ -717,6 +708,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/testpl.py" />
+    <entry file="file://$PROJECT_DIR$/makechart.py" />
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_monkey_qt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui.spec" />
     <entry file="file://$PROJECT_DIR$/ui/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -724,65 +725,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testpl.py">
+    <entry file="file://$PROJECT_DIR$/chart.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/makechart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="175" column="107" lean-forward="false" selection-start-line="173" selection-start-column="4" selection-end-line="175" selection-end-column="107" />
+        <state relative-caret-position="133">
+          <caret line="8" column="69" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="69" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ui/ui_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="293" column="69" lean-forward="true" selection-start-line="293" selection-start-column="69" selection-end-line="293" selection-end-column="69" />
+        <state relative-caret-position="5320">
+          <caret line="280" column="15" lean-forward="false" selection-start-line="280" selection-start-column="8" selection-end-line="280" selection-end-column="39" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datadel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="55" column="68" lean-forward="false" selection-start-line="55" selection-start-column="68" selection-end-line="55" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2242">
-          <caret line="457" column="23" lean-forward="true" selection-start-line="457" selection-start-column="23" selection-end-line="457" selection-end-column="23" />
+        <state relative-caret-position="57">
+          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="14" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#7479#7713#0" expanded="false" />
-            <element signature="e#7740#7817#0" expanded="false" />
-            <element signature="e#7893#8405#0" expanded="false" />
-            <element signature="e#8457#10137#0" expanded="false" />
-            <element signature="e#10189#10721#0" expanded="false" />
-            <element signature="e#10773#11155#0" expanded="false" />
-            <element signature="e#11207#12872#0" expanded="false" />
-            <element signature="e#12924#13434#0" expanded="false" />
-            <element signature="e#13486#13992#0" expanded="false" />
-            <element signature="e#14044#14550#0" expanded="false" />
-            <element signature="e#14602#16085#0" expanded="false" />
-            <element signature="e#16135#16354#0" expanded="false" />
+            <element signature="e#7025#16228#0" expanded="false" />
+            <element signature="e#7277#7511#0" expanded="false" />
+            <element signature="e#7538#7615#0" expanded="false" />
+            <element signature="e#7691#8203#0" expanded="false" />
+            <element signature="e#8255#9935#0" expanded="false" />
+            <element signature="e#9987#10519#0" expanded="false" />
+            <element signature="e#10571#10953#0" expanded="false" />
+            <element signature="e#11005#12670#0" expanded="false" />
+            <element signature="e#12722#13232#0" expanded="false" />
+            <element signature="e#13284#13790#0" expanded="false" />
+            <element signature="e#13842#14348#0" expanded="false" />
+            <element signature="e#14400#15883#0" expanded="false" />
+            <element signature="e#15933#16152#0" expanded="false" />
+            <element signature="e#16264#16733#0" expanded="false" />
+            <element signature="e#18564#18633#0" expanded="false" />
+            <element signature="e#19311#19322#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chart.py">
+    <entry file="file://$PROJECT_DIR$/datadel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114">
-          <caret line="4" column="52" lean-forward="false" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
-          <folding />
+        <state relative-caret-position="209">
+          <caret line="342" column="35" lean-forward="true" selection-start-line="342" selection-start-column="35" selection-end-line="342" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

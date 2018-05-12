@@ -330,7 +330,7 @@ class datadel(object):
         try:
             suicide = []
             suicide1 = pd.crosstab(self.data_list.iyear, self.data_list.suicide, margins=True)
-            suicide1.rename(columns={0: 'suicide', 1: 'other'}, inplace=True)
+            suicide1.rename(columns={0:'other' , 1: 'suicide'}, inplace=True)
             suicide_group = suicide1.loc['All']
             suicide_group.drop('All', inplace=True)
             suicide1.drop('All', inplace=True)

@@ -2,14 +2,9 @@ import ui.ui_main
 import datadel
 import shutil
 import hashlib
-import sys, os, time
-from PyQt5.QtGui import *
+import os
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
-#from PyQt5 import QtCore, QtGui
-#from PIL import Image,ImageEnhance,ImageFilter
-#from PyQt5.QtWebEngineWidgets import *
-#from PyQt5.QtWebChannel import QWebChannel
 
 class MyForm(QMainWindow):
     def __init__(self, parent=None):
@@ -388,6 +383,9 @@ class MyForm(QMainWindow):
                 pass
             else:
                 self.ui.lineEdit.setText(self.filename)
+                self.child1.takeChildren()
+                self.child5.takeChildren()
+                self.child6.takeChildren()
                 self.get_data = thread1(self, self.filename)
                 self.get_data.start()
 
